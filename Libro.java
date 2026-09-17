@@ -22,6 +22,9 @@ public class Libro {
     public void descontarStock(int cantidad) {
         if (cantidad <= this.stock) {
             this.stock -= cantidad;
+            System.out.println("Stock actualizado con exito.");
+        } else {
+            System.out.println("Stock insuficiente para realizar la venta.");
         }
     }
 
