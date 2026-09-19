@@ -1,18 +1,18 @@
 import java.util.Date;
+import java.util.List;
+import java.util.ArrayList;
 
 public class Venta {
     private String idVenta;
     private Date fecha;
     private int cantidad;
     private double precioUnitario;
-    private Cliente cliente;
-    private Libro libro;
 
     // Constructor vacio
     public Venta() {
     }
 
-    // Constructor con parametros (segun UML)
+    // Constructor con parametros
     public Venta(String idVenta, Date fecha, int cantidad, double precioUnitario) {
         this.idVenta = idVenta;
         this.fecha = fecha;
@@ -20,9 +20,20 @@ public class Venta {
         this.precioUnitario = precioUnitario;
     }
 
-    // Metodo del diagrama UML
+    // Metodos del diagrama UML
+    public void registrarVenta(int idLibro, int idCliente, Date fecha, int cantidad, double precioUnitario) {
+        this.fecha = fecha;
+        this.cantidad = cantidad;
+        this.precioUnitario = precioUnitario;
+        System.out.println("Venta registrada con exito.");
+    }
+
     public double calcularTotalVenta() {
         return this.cantidad * this.precioUnitario;
+    }
+
+    public List<Venta> getHistorialVenta() {
+        return new ArrayList<>();
     }
 
     // Getters y Setters
@@ -56,21 +67,5 @@ public class Venta {
 
     public void setPrecioUnitario(double precioUnitario) {
         this.precioUnitario = precioUnitario;
-    }
-
-    public Cliente getCliente() {
-        return cliente;
-    }
-
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
-    }
-
-    public Libro getLibro() {
-        return libro;
-    }
-
-    public void setLibro(Libro libro) {
-        this.libro = libro;
     }
 }

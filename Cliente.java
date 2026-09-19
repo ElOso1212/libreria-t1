@@ -1,4 +1,5 @@
 public class Cliente {
+    private int idCliente;
     private String dni;
     private String nombre;
     private String correo;
@@ -8,13 +9,22 @@ public class Cliente {
     }
 
     // Constructor con parametros
-    public Cliente(String dni, String nombre, String correo) {
+    public Cliente(int idCliente, String dni, String nombre, String correo) {
+        this.idCliente = idCliente;
         this.dni = dni;
         this.nombre = nombre;
         this.correo = correo;
     }
 
     // Getters y Setters
+    public int getIdCliente() {
+        return idCliente;
+    }
+
+    public void setIdCliente(int idCliente) {
+        this.idCliente = idCliente;
+    }
+
     public String getDni() {
         return dni;
     }

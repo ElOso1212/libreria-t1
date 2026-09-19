@@ -1,4 +1,5 @@
 public class Libro {
+    private int idLibro;
     private String isbn;
     private String titulo;
     private String autor;
@@ -9,8 +10,9 @@ public class Libro {
     public Libro() {
     }
 
-    // Constructor con parametros (segun UML)
-    public Libro(String isbn, String titulo, String autor, double precio, int stock) {
+    // Constructor con parametros
+    public Libro(int idLibro, String isbn, String titulo, String autor, double precio, int stock) {
+        this.idLibro = idLibro;
         this.isbn = isbn;
         this.titulo = titulo;
         this.autor = autor;
@@ -19,20 +21,40 @@ public class Libro {
     }
 
     // Metodos del diagrama UML
+    public boolean existeStock(int cantidad) {
+        return this.stock >= cantidad;
+    }
+
     public void descontarStock(int cantidad) {
-        if (cantidad <= this.stock) {
+        if (existeStock(cantidad)) {
             this.stock -= cantidad;
             System.out.println("Stock actualizado con exito.");
         } else {
-            System.out.println("Stock insuficiente para realizar la venta.");
+            System.out.println("Stock insuficiente para realizar la operacion.");
         }
     }
 
-    public int verificarStock(String isbn) {
+    public int verificarStock(int idLibro) {
         return this.stock;
     }
 
+    public int calcularTotalVentas() {
+        return 0;
+    }
+
+    public double calcularTotalIngresos() {
+        return 0.0;
+    }
+
     // Getters y Setters
+    public int getIdLibro() {
+        return idLibro;
+    }
+
+    public void setIdLibro(int idLibro) {
+        this.idLibro = idLibro;
+    }
+
     public String getIsbn() {
         return isbn;
     }

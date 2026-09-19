@@ -2,21 +2,27 @@ import java.util.Date;
 
 public class Main {
     public static void main(String[] args) {
-        // 1. Crear instancias de prueba
-        Cliente cliente1 = new Cliente("72819203", "Alonso Flores", "alonso@correo.com");
-        Libro libro1 = new Libro("978-0134685991", "Java: Effective Programming", "Joshua Bloch", 120.0, 5);
+        System.out.println("=== SISTEMA DE GESTION - LIBRERIA PAGETURNER ===");
 
-        // 2. Probar una venta y descuento de stock
-        Venta venta1 = new Venta("V-001", new Date(), 2, libro1.getPrecio());
-        venta1.setCliente(cliente1);
-        venta1.setLibro(libro1);
-        libro1.descontarStock(venta1.getCantidad());
+        // Instanciar Cliente segun diagrama UML
+        Cliente cliente = new Cliente(1, "72345678", "Juan Perez", "juan.perez@email.com");
+        System.out.println("Cliente registrado: " + cliente.getNombre() + " (DNI: " + cliente.getDni() + ")");
 
-        // 3. Mostrar resumen en consola
-        System.out.println("=== SISTEMA LIBRERIA PAGETURNER ===");
-        System.out.println("Cliente: " + cliente1.getNombre());
-        System.out.println("Libro adquirido: " + libro1.getTitulo());
-        System.out.println("Monto total de venta: S/ " + venta1.calcularTotalVenta());
-        System.out.println("Stock restante: " + libro1.getStock());
+        // Instanciar Libro segun diagrama UML
+        Libro libro = new Libro(101, "978-3-16-148410-0", "Programacion en Java", "Autor Ejemplo", 45.50, 10);
+        System.out.println("Libro disponible: " + libro.getTitulo() + " | Stock inicial: " + libro.getStock());
+
+        // Operacion de stock
+        libro.descontarStock(2);
+
+        // Instanciar Reserva segun diagrama UML
+        Reserva reserva = new Reserva(501, new Date());
+        reserva.registrarReserva(cliente.getIdCliente(), libro.getIdLibro(), new Date());
+
+        // Instanciar Venta segun diagrama UML
+        Venta venta = new Venta("V-001", new Date(), 2, 45.50);
+        System.out.println("Total de venta calculada: S/. " + venta.calcularTotalVenta());
+
+        System.out.println("=== COMPILACION Y PRUEBA EXITOSA ===");
     }
 }

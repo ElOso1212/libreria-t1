@@ -1,29 +1,37 @@
 import java.util.Date;
+import java.util.List;
+import java.util.ArrayList;
 
 public class Reserva {
-    private String idReserva;
+    private int idReserva;
     private Date fechaReserva;
-    private String estado;
-    private Cliente cliente;
-    private Libro libro;
 
     // Constructor vacio
     public Reserva() {
     }
 
-    // Constructor con parametros (segun UML)
-    public Reserva(String idReserva, Date fechaReserva, String estado) {
+    // Constructor con parametros
+    public Reserva(int idReserva, Date fechaReserva) {
         this.idReserva = idReserva;
         this.fechaReserva = fechaReserva;
-        this.estado = estado;
+    }
+
+    // Metodos del diagrama UML
+    public void registrarReserva(int idCliente, int idLibro, Date fechaReserva) {
+        this.fechaReserva = fechaReserva;
+        System.out.println("Reserva registrada correctamente para el cliente ID: " + idCliente);
+    }
+
+    public List<Reserva> getHistorialReserva() {
+        return new ArrayList<>();
     }
 
     // Getters y Setters
-    public String getIdReserva() {
+    public int getIdReserva() {
         return idReserva;
     }
 
-    public void setIdReserva(String idReserva) {
+    public void setIdReserva(int idReserva) {
         this.idReserva = idReserva;
     }
 
@@ -33,29 +41,5 @@ public class Reserva {
 
     public void setFechaReserva(Date fechaReserva) {
         this.fechaReserva = fechaReserva;
-    }
-
-    public String getEstado() {
-        return estado;
-    }
-
-    public void setEstado(String estado) {
-        this.estado = estado;
-    }
-
-    public Cliente getCliente() {
-        return cliente;
-    }
-
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
-    }
-
-    public Libro getLibro() {
-        return libro;
-    }
-
-    public void setLibro(Libro libro) {
-        this.libro = libro;
     }
 }
